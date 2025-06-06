@@ -19,3 +19,4 @@ mutagen
 yt-dlp
 requests
 cryptography
+pyTelegramBotAPI==4.16.1

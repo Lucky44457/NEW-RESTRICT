@@ -17,17 +17,17 @@ YTUB_COOKIES = """
 # write here yt cookies
 """
 
-API_ID = os.getenv("API_ID", "")
-API_HASH = os.getenv("API_HASH", "")
+API_ID = os.getenv("API_ID", "23939637")
+API_HASH = os.getenv("API_HASH", "477f51720ede3eef6997dbc442151c43")
 BOT_TOKEN = os.getenv("BOT_TOKEN", "")
-MONGO_DB = os.getenv("MONGO_DB", "")
-OWNER_ID = list(map(int, os.getenv("OWNER_ID", "").split())) # list seperated via space
-DB_NAME = os.getenv("DB_NAME", "telegram_downloader")
-STRING = os.getenv("STRING", None) # optional
-LOG_GROUP = int(os.getenv("LOG_GROUP", "-1001234456")) # optional with -100
-FORCE_SUB = int(os.getenv("FORCE_SUB", "-10012345567")) # optional with -100
-MASTER_KEY = os.getenv("MASTER_KEY", "gK8HzLfT9QpViJcYeB5wRa3DmN7P2xUq") # for session encryption
-IV_KEY = os.getenv("IV_KEY", "s7Yx5CpVmE3F") # for decryption
+MONGO_DB = os.getenv("MONGO_DB", "mongodb+srv://rex380895:sxz1J690QyA5RIaj@cluster0.scyfy8x.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+OWNER_ID = list(map(int, os.getenv("OWNER_ID", "6425525488").split())) # list seperated via space
+DB_NAME = os.getenv("DB_NAME", "MANGO_DB")
+STRING = os.getenv("STRING", "1BVtsOJ4BuyBlTNK6O6tqteRyAGEXUYAlyb6lYkcMo0dIclJY6Lc5UK4XQZY7MrDjC11RTo-OpVEIQZvPxD2MJ7_2dlL75XN0U3D55nluEMFZ5UpCcA5IHdzCspk1M8ONckq0Zb4s6r-9MQm4-ml77uNM7fVv_MjUGxCBsMgqYXIypB6Co1M17yYtMPOST1vQFpa8YMSUeVBvP2eQJQ20pkdyqmLlsuAUbgO_YCO9WiVwLmGVsr-nIcMv6baxLnKljDBqDCTgfTxEzb9JCYAiwSHGkQ_f-zX-k04FZx8pzjaNFjO1zMU84TNleae8rC7ccsL5NNUhFV8jGMigT3T6zoi4_Qmx5f8=") # optional
+LOG_GROUP = int(os.getenv("LOG_GROUP", "-1002780402081")) # optional with -100
+FORCE_SUB = int(os.getenv("FORCE_SUB", "-1002780402081")) # optional with -100
+MASTER_KEY = os.getenv("MASTER_KEY", "lq0a7uQHiGP00yzzYN3YF1yOIqIddCygNm9lv4rUM64=") # for session encryption
+IV_KEY = os.getenv("IV_KEY", "fa6cd9ac65d3fc6053e4bdfb58de22d4") # for decryption
 YT_COOKIES = os.getenv("YT_COOKIES", YTUB_COOKIES)
 INSTA_COOKIES = os.getenv("INSTA_COOKIES", INST_COOKIES)
 FREEMIUM_LIMIT = int(os.getenv("FREEMIUM_LIMIT", "0"))

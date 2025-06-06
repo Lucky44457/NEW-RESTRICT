@@ -1,8 +1,6 @@
 from flask import Flask, request
 import telebot
 from config import BOT_TOKEN
-import os
-import importlib
 
 # Initialize bot
 bot = telebot.TeleBot(BOT_TOKEN)
@@ -28,21 +26,16 @@ def webhook():
     else:
         return '', 403
 
-# Basic command for checking bot status
+# /start command
 @bot.message_handler(commands=['start'])
 def start_message(message):
-    bot.reply_to(message, "Hello! Bot is alive 🚀 and running on Koyeb!")
+    bot.reply_to(message, "Hello! Bot is alive ðŸš€ and running on Koyeb!")
 
+# Optional: handle /help command
 @bot.message_handler(commands=['help'])
 def help_message(message):
     bot.reply_to(message, "Send /start to check if I am running!")
 
-# === Auto-import all plugins ===
-plugin_folder = "plugins"
-for filename in os.listdir(plugin_folder):
-    if filename.endswith(".py") and not filename.startswith("__"):
-        importlib.import_module(f"{plugin_folder}.{filename[:-3]}")
-
-# === Start Flask app ===
+# Run Flask app on port 8080
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)

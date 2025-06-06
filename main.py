@@ -25,7 +25,8 @@ async def main():
         await asyncio.sleep(1)  
 
 if __name__ == "__main__":
-    loop = asyncio.get_event_loop()
+    loop = asyncio.new_event_loop()
+asyncio.set_event_loop(loop)
     print("Starting clients ...")
     try:
         loop.run_until_complete(main())

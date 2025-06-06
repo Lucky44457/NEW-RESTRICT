@@ -31,10 +31,39 @@ def webhook():
 def start_message(message):
     bot.reply_to(message, "Hello! Bot is alive 🚀 and running on Koyeb!")
 
-# Optional: handle /help command
+# /help command
 @bot.message_handler(commands=['help'])
 def help_message(message):
-    bot.reply_to(message, "Send /start to check if I am running!")
+    help_text = (
+        "📚 Available Commands:\n"
+        "/start - Check if bot is alive\n"
+        "/help - Show this message\n"
+        "/batch - Handle batch task\n"
+        "/login - Start login process\n"
+        "/session - Create a session\n"
+        "/single - Handle single task"
+    )
+    bot.reply_to(message, help_text)
+
+# /batch command
+@bot.message_handler(commands=['batch'])
+def batch_message(message):
+    bot.reply_to(message, "✅ Batch command is working!")
+
+# /login command
+@bot.message_handler(commands=['login'])
+def login_message(message):
+    bot.reply_to(message, "🔐 Login command is working!")
+
+# /session command
+@bot.message_handler(commands=['session'])
+def session_message(message):
+    bot.reply_to(message, "💬 Session command is working!")
+
+# /single command
+@bot.message_handler(commands=['single'])
+def single_message(message):
+    bot.reply_to(message, "🎯 Single command is working!")
 
 # Run Flask app on port 8080
 if __name__ == '__main__':

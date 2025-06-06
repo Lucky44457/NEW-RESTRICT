@@ -1,56 +1,41 @@
-# Copyright (c) 2025 devgagan : https://github.com/devgaganin.  
-# Licensed under the GNU General Public License v3.0.  
-# See LICENSE file in the repository root for full license text.
+from flask import Flask, request
+import telebot
+from config import BOT_TOKEN
 
-# === Add this part ===
-import threading
-from http.server import SimpleHTTPRequestHandler, HTTPServer
+# Initialize bot
+bot = telebot.TeleBot(BOT_TOKEN)
 
-def run_http_server():
-    server_address = ('', 8080)
-    httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
-    print("Starting dummy HTTP server on port 8080...")
-    httpd.serve_forever()
+# Initialize Flask app
+app = Flask(__name__)
 
-threading.Thread(target=run_http_server, daemon=True).start()
-# === End of added part ===
+# Your Koyeb public URL + webhook endpoint
+WEBHOOK_URL = 'https://wooden-andi-lakshaykhajuria215-ac33ecfb.koyeb.app/my-bot'
 
-# Your original imports
-import asyncio
-from shared_client import start_client
-import importlib
-import os
-import sys
+# Set webhook
+bot.remove_webhook()
+bot.set_webhook(url=WEBHOOK_URL)
 
-async def load_and_run_plugins():
-    await start_client()
-    plugin_dir = "plugins"
-    plugins = [f[:-3] for f in os.listdir(plugin_dir) if f.endswith(".py") and f != "__init__.py"]
+# Webhook endpoint
+@app.route('/my-bot', methods=['POST'])
+def webhook():
+    if request.headers.get('content-type') == 'application/json':
+        json_string = request.get_data().decode('utf-8')
+        update = telebot.types.Update.de_json(json_string)
+        bot.process_new_updates([update])
+        return '', 200
+    else:
+        return '', 403
 
-    for plugin in plugins:
-        module = importlib.import_module(f"plugins.{plugin}")
-        if hasattr(module, f"run_{plugin}_plugin"):
-            print(f"Running {plugin} plugin...")
-            await getattr(module, f"run_{plugin}_plugin")()  
+# /start command
+@bot.message_handler(commands=['start'])
+def start_message(message):
+    bot.reply_to(message, "Hello! Bot is alive 🚀 and running on Koyeb!")
 
-async def main():
-    await load_and_run_plugins()
-    while True:
-        await asyncio.sleep(1)  
+# Optional: handle /help command
+@bot.message_handler(commands=['help'])
+def help_message(message):
+    bot.reply_to(message, "Send /start to check if I am running!")
 
-if __name__ == "__main__":
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
-    print("Starting clients ...")
-    try:
-        loop.run_until_complete(main())
-    except KeyboardInterrupt:
-        print("Shutting down...")
-    except Exception as e:
-        print(e)
-        sys.exit(1)
-    finally:
-        try:
-            loop.close()
-        except Exception:
-            pass
+# Run Flask app on port 8080
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8080)

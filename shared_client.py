@@ -15,14 +15,18 @@ async def start_client():
     if not client.is_connected():
         await client.start(bot_token=BOT_TOKEN)
         print("SpyLib started...")
-    if STRING:
+
+    # Safely handle userbot start — skip if STRING is empty
+    if STRING and len(STRING) > 10:
         try:
             await userbot.start()
             print("Userbot started...")
         except Exception as e:
-            print(f"Hey honey!! check your premium string session, it may be invalid of expire {e}")
+            print(f"Hey honey!! check your premium string session, it may be invalid or expired. Error: {e}")
             sys.exit(1)
+    else:
+        print("No valid STRING provided → Skipping Userbot.")
+
     await app.start()
     print("Pyro App Started...")
     return client, app, userbot
-

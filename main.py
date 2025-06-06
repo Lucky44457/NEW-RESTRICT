@@ -2,6 +2,20 @@
 # Licensed under the GNU General Public License v3.0.  
 # See LICENSE file in the repository root for full license text.
 
+# === Add this part ===
+import threading
+from http.server import SimpleHTTPRequestHandler, HTTPServer
+
+def run_http_server():
+    server_address = ('', 8080)
+    httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
+    print("Starting dummy HTTP server on port 8080...")
+    httpd.serve_forever()
+
+threading.Thread(target=run_http_server, daemon=True).start()
+# === End of added part ===
+
+# Your original imports
 import asyncio
 from shared_client import start_client
 import importlib

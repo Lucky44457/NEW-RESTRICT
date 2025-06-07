@@ -1,6 +1,5 @@
 import asyncio
-from pyrogram import Client
-from pyrogram import idle
+from pyrogram import Client, idle
 from config import API_ID, API_HASH, BOT_TOKEN, PLUGIN_DIR
 
 client = Client(
@@ -13,8 +12,8 @@ client = Client(
 
 async def main():
     await client.start()
-    print("✅ Bot started using long polling...")
-    await idle()  # Keep the bot running
+    print("✅ Bot started using long polling with plugins...")
+    await idle()
     await client.stop()
 
 if __name__ == "__main__":

@@ -18,7 +18,7 @@ YTUB_COOKIES = """
 
 API_ID = os.getenv("API_ID", "23939637")
 API_HASH = os.getenv("API_HASH", "477f51720ede3eef6997dbc442151c43")
-BOT_TOKEN = os.getenv("BOT_TOKEN", "7438925867:AAE_hmjlaN-4rbPUErz1Ab-RPYbZcGWyGIY")
+BOT_TOKEN = os.getenv("7834819755:AAE5_EN9HHkJmoZwfNhDzEwonuIvV5QGJoU")
 MONGO_DB = os.getenv("MONGO_DB", "mongodb+srv://rex380895:sxz1J690QyA5RIaj@cluster0.scyfy8x.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 OWNER_ID = list(map(int, os.getenv("OWNER_ID", "6425525488").split())) # list seperated via space
 DB_NAME = os.getenv("DB_NAME", "MANGO_DB")

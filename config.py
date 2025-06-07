@@ -8,7 +8,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # VPS --- FILL COOKIES 🍪 in """ ... """ 
-
 INST_COOKIES = """
 # wtite up here insta cookies
 """
@@ -35,3 +34,5 @@ PREMIUM_LIMIT = int(os.getenv("PREMIUM_LIMIT", "500"))
 JOIN_LINK = os.getenv("JOIN_LINK", "https://t.me/team_spy_pro") # this link for start command message
 ADMIN_CONTACT = os.getenv("ADMIN_CONTACT", "https://t.me/username_of_admin")
 
+# ✅ REQUIRED FOR PLUGIN SUPPORT
+PLUGIN_DIR = "plugins"

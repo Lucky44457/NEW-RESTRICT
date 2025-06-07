@@ -11,9 +11,8 @@ client = Client(
 )
 
 async def main():
-    await client.delete_webhook()  # ← this line is important!
     await client.start()
-    print("✅ Bot started using long polling...")
+    print("✅ Bot started with long polling")
     await idle()
     await client.stop()
 
